@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+//import 'package:get/get.dart';
 import 'package:instant/instant.dart';
 import 'package:intl/intl.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:temp_server/src/providers/temperaturas_state.dart';
+import 'package:temp_server/src/widgets/get_last_temp_widget.dart';
+//import 'package:temp_server/src/providers/temperaturas_state.dart';
 
 
 
@@ -46,7 +47,7 @@ class InterfazHome extends StatelessWidget{
       body: Stack(
         children: [
           ColorFondo(),
-
+          GetLastTemp(),
         ],
       ),
     );

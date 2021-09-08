@@ -9,8 +9,8 @@ class TemperaturasProvider{
     //List<TemperaturasModel> temperaturas = [];
     final response = await http.get(_urlToApi, queryParameters: {'page': pagina});
     List<dynamic> responseData = response.data['docs'];
-    print(responseData);
-    print(responseData.length);
+    //print(responseData);
+    //print(responseData.length);
     return responseData.reversed.map((data) => TemperaturasModel.fromMapJson(data)).toList();
   }
 }
