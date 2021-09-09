@@ -1,0 +1,1 @@
+export 'package:temp_server/src/const/temps_const.dart';
