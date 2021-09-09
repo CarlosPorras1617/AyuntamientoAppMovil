@@ -10,6 +10,6 @@ class TemperaturasProvider{
     List<dynamic> responseData = response.data['docs'];
     //print(responseData);
     //print(responseData.length);
-    return responseData.reversed.map((data) => TemperaturasModel.fromMapJson(data)).toList();
+    return responseData.map((data) => TemperaturasModel.fromMapJson(data)).toList();
   }
 }
