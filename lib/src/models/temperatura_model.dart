@@ -22,6 +22,5 @@ class TemperaturasModel{
     temperatura: (data['temperatura']/1 == null) ? [] : data['temperatura']/1,
     temperaturaAlta: (data['temperaturalta']/1 == null) ? [] : data['temperaturalta']/1,
     temperaturaMedia: (data['temperaturamedia']/1 == null) ? [] : data['temperaturamedia']/1
-
   );
 }
