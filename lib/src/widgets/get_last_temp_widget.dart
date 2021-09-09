@@ -21,44 +21,61 @@ class GetLastTempState extends State {
         if (snap.hasData) {
           final temps = snap.data;
           var tempActual = temps!.last.temperatura;
-          return Column(
-            children: [
-              Text(
-                '${tempActual.toString()} °C',
-                style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 30.0,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    tempActual = temps.last.temperatura;
-                  });
-                },
-                child: Text('Refrescar Temperatura'),
-              ),
-              if (tempActual! < TemperaturasValues.tempOptima)
-                Text('Temperatura Optima')
-              else if (tempActual! >= TemperaturasValues.tempOptima &&
-                  tempActual! <= TemperaturasValues.tempCritica)
-                Text('Temperatura en alerta')
-              else if (tempActual! > TemperaturasValues.tempCritica)
-                Text('Temperatura Critica')
-            ],
+          return Container(
+            width: _mediaSize.width * 0.84,
+            height: _mediaSize.height * 0.6,
+            child: Column(
+              children: [
+                SizedBox(height: _mediaSize.height * 0.05),
+                Text('Temperatura', style: TextStyle(fontSize: 30),),
+                Text('Actual', style: TextStyle(fontSize: 30),),
+                SizedBox(height: _mediaSize.height * 0.03),
+                Text(
+                  '${tempActual.toString()} °C',
+                  style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      tempActual = temps.last.temperatura;
+                    });
+                  },
+                  child: Text('Refrescar Temperatura'),
+                ),
+                if (tempActual! < TemperaturasValues.tempOptima)
+                  Container(
+                    margin: EdgeInsets.only(top: _mediaSize.height *0.5),
+                    child: Text('Temperatura Optima'),
+                  )
+                else if (tempActual! >= TemperaturasValues.tempOptima &&
+                    tempActual! <= TemperaturasValues.tempCritica)
+                  Container(
+                    margin: EdgeInsets.only(top: _mediaSize.height * 0.05),
+                    child: Text('Temperatura en alerta'),
+                  )
+                else if (tempActual! > TemperaturasValues.tempCritica)
+                  Container(
+                    margin: EdgeInsets.only(top: _mediaSize.height *0.05),
+                    child: Text('Temperatura Critica', style: TextStyle(fontSize:  28),),
+                  )
+              ],
+            ),
           );
         }
         return Container(
-          width: 150.0,
-          height: 150.0,
+          width: _mediaSize.width * 0.84,
+          height: _mediaSize.height * 0.6,
           child: Stack(
             children: [
               Positioned(
-                left: _mediaSize.width *0.2,
-                bottom: _mediaSize.height * 0.1,
+                left: _mediaSize.width * 0.37,
+                bottom: _mediaSize.height * 0.5,
                 child: CircularProgressIndicator(
-                    color: Colors.red,
-                  ),
+                  color: Colors.blue,
+                ),
               ),
             ],
           ),

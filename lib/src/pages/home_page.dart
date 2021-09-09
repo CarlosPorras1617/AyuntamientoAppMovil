@@ -60,11 +60,7 @@ class InterfazHome extends StatelessWidget {
             child: Stack(
               children: [
                 ContenedorCentro(),
-                Positioned(
-                  bottom: _mediaSize.height * 0.35,
-                  left: _mediaSize.width * 0.18,
-                  child: GetLastTemp(),
-                )
+                GetLastTemp(),
               ],
             ),
           ),
