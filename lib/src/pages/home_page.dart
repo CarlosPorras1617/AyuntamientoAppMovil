@@ -99,7 +99,7 @@ class BotonesNavegacion extends StatelessWidget {
               SizedBox(height: _mediaSize.height * 0.05),
               _BtnMenu(
                 route: '/GraficaTemps',
-                title: 'Grafica',
+                title: 'Movimientos y Capturas',
               )
             ],
           ),

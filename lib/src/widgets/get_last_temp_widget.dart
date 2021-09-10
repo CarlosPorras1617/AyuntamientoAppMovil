@@ -27,8 +27,14 @@ class GetLastTempState extends State {
             child: Column(
               children: [
                 SizedBox(height: _mediaSize.height * 0.05),
-                Text('Temperatura', style: TextStyle(fontSize: 30),),
-                Text('Actual', style: TextStyle(fontSize: 30),),
+                Text(
+                  'Temperatura',
+                  style: TextStyle(fontSize: 30),
+                ),
+                Text(
+                  'Actual',
+                  style: TextStyle(fontSize: 30),
+                ),
                 SizedBox(height: _mediaSize.height * 0.03),
                 Text(
                   '${tempActual.toString()} °C',
@@ -47,7 +53,7 @@ class GetLastTempState extends State {
                 ),
                 if (tempActual! < TemperaturasValues.tempOptima)
                   Container(
-                    margin: EdgeInsets.only(top: _mediaSize.height *0.5),
+                    margin: EdgeInsets.only(top: _mediaSize.height * 0.5),
                     child: Text('Temperatura Optima'),
                   )
                 else if (tempActual! >= TemperaturasValues.tempOptima &&
@@ -58,8 +64,11 @@ class GetLastTempState extends State {
                   )
                 else if (tempActual! > TemperaturasValues.tempCritica)
                   Container(
-                    margin: EdgeInsets.only(top: _mediaSize.height *0.05),
-                    child: Text('Temperatura Critica', style: TextStyle(fontSize:  28),),
+                    margin: EdgeInsets.only(top: _mediaSize.height * 0.05),
+                    child: Text(
+                      'Temperatura Critica',
+                      style: TextStyle(fontSize: 28),
+                    ),
                   )
               ],
             ),

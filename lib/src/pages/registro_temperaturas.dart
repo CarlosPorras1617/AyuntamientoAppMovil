@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:temp_server/src/providers/temperaturas_providers.dart';
 import 'package:temp_server/src/providers/temperaturas_state.dart';
 
 class RegistroTemps extends StatefulWidget {
@@ -32,8 +33,53 @@ class RegistroTempsState extends State {
   }
 @override
   Widget build(BuildContext context) {
+    final temsRecargar = Get.put(TemperaturasState());
+    final _mediaSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
+      appBar: AppBar(
+        title: Text('Registro de Temperaturas'),
+      ),
+      body: Stack(
+        children: [
+          Positioned(
+            left: _mediaSize.width * 0.23,
+            child: Container(
+              height: 200.0,
+              width: 200.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/placeholder.jpg'),
+                ),
+              ),
+            ),
+          ),
+          ElevatedButton(onPressed: (){
+            setState(() {
+              temsRecargar.obtenerTemperaturas();
+            });
+          }, child: Text('Recargar temperaturas')),
+          GetTemps(controller: _controller),
+          if(_cargando == true)
+          //while getting more temperatures
+            Center(
+                 child: CircularProgressIndicator(
+                   color: Colors.blue,
+                 ),
+              )
+          else if(_cargando == false)
+            Container()
+        ],
+      )
+    );
+  }
+}
+
+class GetTemps extends StatelessWidget {
+  final ScrollController ? controller;
+  GetTemps({required this.controller});
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
         child: Stack(
           children: [
             GetBuilder<TemperaturasState>(
@@ -44,7 +90,7 @@ class RegistroTempsState extends State {
                   child: Card(
                     child: ListView.builder(
                       shrinkWrap: true,
-                      controller: _controller,
+                      controller: controller,
                       itemCount: tempsState.temperaturas.length,
                       itemBuilder: (BuildContext context, int i){
                         final tempsData = tempsState.temperaturas[i];
@@ -69,8 +115,7 @@ class RegistroTempsState extends State {
             )
           ],
         ),
-      ),
-    );
+      );
   }
 }
 /*var lastTempProvider = LastTemperaturaProvider();
