@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temp_server/src/pages/grafica_temps.dart';
+import 'package:temp_server/src/pages/movs_page.dart';
 import 'package:temp_server/src/pages/home_page.dart';
 import 'package:temp_server/src/pages/registro_temperaturas.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget{
       routes: {
         '/':(_)=>MenuScroll(),
         '/RegistroTemps':(_)=>RegistroTemps(),
-        '/GraficaTemps':(_)=>GraficaTemps(),
+        '/MovimientosPage':(_)=>MovimientosPage(),
       },
     );
   }
