@@ -8,11 +8,11 @@ class MovimientosProvider{
   Future<List<MovimientosModel>> obtenerMovimientos(int pagina)async{
     final response = await http.get(_urlToApi, queryParameters: {'page': pagina});
     List<dynamic> responseData = response.data['docs'];
-    if (responseData.isNotEmpty) {
+    /*if (responseData.isNotEmpty) {
       for (var i = 0; i < responseData.length; i++) {
         movimientos.add(MovimientosModel.fromMapJson(responseData[i]));
       }
-    }
-    return movimientos;
+    }*/
+    return responseData.map((data) => MovimientosModel.fromMapJson(data)).toList();
   }
 }

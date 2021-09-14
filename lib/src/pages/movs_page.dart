@@ -18,6 +18,7 @@ class _MovimientosPageState extends State{
     _movimientosState.obtenerMovimientos();
     _controller.addListener(() async{ 
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
+        if(_cargando == false){
         setState(() {
           _cargando=true;
         });
@@ -25,10 +26,12 @@ class _MovimientosPageState extends State{
         setState(() {
           _cargando = false;
         });
+        }
       }
      });
      super.initState();
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
