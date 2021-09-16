@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:temp_server/src/const/temps_const.dart';
 import 'package:temp_server/src/models/last_temperatura_model.dart';
 import 'package:temp_server/src/providers/last_temperatura_provider.dart';
+import 'package:temp_server/src/providers/temperaturas_state.dart';
 
 class GetLastTemp extends StatefulWidget {
   @override
@@ -10,6 +12,12 @@ class GetLastTemp extends StatefulWidget {
 }
 
 class GetLastTempState extends State {
+  final _temperaturasState = Get.put(TemperaturasState());
+  @override
+  void initState(){
+    _temperaturasState.obtenerTemperaturas();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final _mediaSize = MediaQuery.of(context).size;

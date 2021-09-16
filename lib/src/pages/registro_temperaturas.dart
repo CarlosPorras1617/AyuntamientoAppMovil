@@ -12,9 +12,9 @@ class RegistroTemps extends StatefulWidget {
 class RegistroTempsState extends State {
   final _controller = ScrollController();
   bool _cargando = false;
+  final _temperaturasState = Get.put(TemperaturasState());
   @override
   void initState() {
-    final _temperaturasState = Get.put(TemperaturasState());
     _temperaturasState.obtenerTemperaturas();
     _controller.addListener(() async{ 
       if(_controller.position.pixels == _controller.position.maxScrollExtent){
@@ -33,7 +33,6 @@ class RegistroTempsState extends State {
   }
 @override
   Widget build(BuildContext context) {
-    final temsRecargar = Get.put(TemperaturasState());
     final _mediaSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -53,11 +52,6 @@ class RegistroTempsState extends State {
               ),
             ),
           ),
-          ElevatedButton(onPressed: (){
-            setState(() {
-              temsRecargar.obtenerTemperaturas();
-            });
-          }, child: Text('Recargar temperaturas')),
           GetTemps(controller: _controller),
           if(_cargando == true)
           //while getting more temperatures

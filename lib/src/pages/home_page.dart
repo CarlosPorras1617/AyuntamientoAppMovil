@@ -85,22 +85,28 @@ class BotonesNavegacion extends StatelessWidget {
           height: _mediaSize.height * 1,
           child: Column(
             children: [
-              Container(
+              /*Container(
                 height: _mediaSize.height * 0.3,
                 alignment: Alignment.topCenter,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/placeholder.jpg'))),
-              ),
+              ),*/
+              SizedBox(height: _mediaSize.height * 0.02),
               _BtnMenu(
                 route: '/RegistroTemps',
                 title: 'Registro De Temperaturas',
               ),
-              SizedBox(height: _mediaSize.height * 0.05),
+              SizedBox(height: _mediaSize.height * 0.02),
               _BtnMenu(
                 route: '/MovimientosPage',
                 title: 'Movimientos y Capturas',
-              )
+              ),
+              SizedBox(height: _mediaSize.height * 0.02),
+              _BtnMenu(
+                title: 'Temperaturas Desequilibrio',
+                route: '/DesequilibriosPage',
+              ),
             ],
           ),
         ),
@@ -144,7 +150,7 @@ class _BtnMenu extends StatelessWidget {
                     Text(
                       title!,
                       textAlign: TextAlign.center,
-                      maxLines: 2,
+                      maxLines: 3,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     )

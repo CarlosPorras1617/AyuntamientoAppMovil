@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temp_server/src/pages/movs_page.dart';
 import 'package:temp_server/src/pages/home_page.dart';
 import 'package:temp_server/src/pages/registro_temperaturas.dart';
+import 'package:temp_server/src/pages/temps_desequilibrios.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget{
         '/':(_)=>MenuScroll(),
         '/RegistroTemps':(_)=>RegistroTemps(),
         '/MovimientosPage':(_)=>MovimientosPage(),
+        '/DesequilibriosPage':(_)=>DesequilibriosPage(),
       },
     );
   }
