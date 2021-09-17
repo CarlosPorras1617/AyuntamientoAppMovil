@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instant/instant.dart';
 import 'package:intl/intl.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:temp_server/src/widgets/color_fondo_widget.dart';
 import 'package:temp_server/src/widgets/get_last_temp_widget.dart';
 
 class MenuScroll extends StatelessWidget {
@@ -77,7 +78,7 @@ class BotonesNavegacion extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: BoxDecoration(color: Color.fromRGBO(88, 170, 224, 1)),
+      decoration: BoxDecoration(color: Color.fromRGBO(109, 43, 49, 1)),
       child: Center(
         child: Container(
           margin: EdgeInsets.only(top: _mediaSize.height * 0.05),
@@ -129,7 +130,7 @@ class _BtnMenu extends StatelessWidget {
       },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Color.fromRGBO(252, 96, 100, 1),
+        color: Colors.white,
         child: Container(
           margin: EdgeInsets.all(_mediaSize.height * 0.03),
           child: Stack(
@@ -161,17 +162,6 @@ class _BtnMenu extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class ColorFondo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(color: Color.fromRGBO(88, 170, 224, 1)),
     );
   }
 }

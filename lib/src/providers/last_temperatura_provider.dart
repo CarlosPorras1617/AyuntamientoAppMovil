@@ -10,12 +10,12 @@ class LastTemperaturaProvider{
     List<dynamic> responseData = response.data;
     //print(responseData);
     //print(responseData.length);
-    //return responseData.map((data)=> LastTemperaturasModel.fromMapJson(data)).toList();
-    if(responseData.isNotEmpty){
+    return responseData.reversed.map((data)=> LastTemperaturasModel.fromMapJson(data)).toList();
+    /*if(responseData.isNotEmpty){
       for (int i = 0; i < responseData.length; i++) {
         temperaturas.add(LastTemperaturasModel.fromMapJson(responseData[i]));
       }
-    }
-    return temperaturas;
+    }*/
+    //return temperaturas;
   }
 }

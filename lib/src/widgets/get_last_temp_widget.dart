@@ -29,7 +29,7 @@ class GetLastTempState extends State {
                 AsyncSnapshot<List<LastTemperaturasModel>> snap) {
               if (snap.hasData) {
                 final temps = snap.data;
-                var tempActual = temps!.last.temperatura;
+                var tempActual = temps!.first.temperatura;
                 return Container(
                   width: _mediaSize.width * 0.84,
                   height: _mediaSize.height * 0.6,

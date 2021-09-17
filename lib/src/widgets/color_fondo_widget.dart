@@ -6,7 +6,7 @@ class ColorFondo extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: BoxDecoration(color: Color.fromRGBO(88, 170, 224, 1)),
+      decoration: BoxDecoration(color: Color.fromRGBO(109, 43, 49, 1)),
     );
   }
 }

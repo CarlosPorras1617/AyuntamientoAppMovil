@@ -18,7 +18,7 @@ class DesequilibriosPageState extends State {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Temperaturas Desequilibrio'),
-        backgroundColor: Color.fromRGBO(88, 170, 224, 1),
+        backgroundColor: Color.fromRGBO(109, 43, 49, 1),
         elevation: 0.0,
       ),
       body: Stack(
