@@ -90,13 +90,15 @@ class _ElementosInCard extends StatelessWidget {
   _ElementosInCard({required this.movs});
   @override
   Widget build(BuildContext context) {
+    final horaPrimerDigito = int.parse(movs!.hora![0]);
+    final horaSegundoDigito = int.parse(movs!.hora![1]);
     final _mediaSize = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/DetallesMovimientos', arguments: movs);
       },
       child: Container(
-        height: 150.0,
+        height: _mediaSize.height * 0.17,
         child: Card(
           elevation: 5.0,
           child: Container(
@@ -110,9 +112,9 @@ class _ElementosInCard extends StatelessWidget {
                   image: NetworkImage(movs!.foto!),
                 ),
               ),
-              title: Text('Texto Ejemplo'),
-              subtitle: Text('Texto Ejemplo 2'),
-              trailing: Text('Texto Ejmplo 3'),
+              title: Text('Movimiento Detectado'),
+              subtitle: (horaPrimerDigito == 0 && horaPrimerDigito <= 9 || horaPrimerDigito == 1 && horaSegundoDigito <= 1) ? Text('Fecha: ${movs!.fecha} \nHora: ${movs!.hora} AM') :Text('Fecha: ${movs!.fecha} \nHora: ${movs!.hora} PM'),
+              isThreeLine: true,
               horizontalTitleGap: 10,
               contentPadding: EdgeInsets.only(left: _mediaSize.width * 0.05),
             ),
