@@ -110,6 +110,7 @@ class GetTemps extends StatelessWidget {
                         return Column(
                           children: [
                             Divider(),
+                            (tempsData.temperatura != 0) ?
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
@@ -136,7 +137,7 @@ class GetTemps extends StatelessWidget {
                                   ),
                                 DividerVertical(),
                                 if (tempsData.temperatura! <
-                                    TemperaturasValues.tempOptima)
+                                    TemperaturasValues.tempOptima && tempsData.temperatura != 0)
                                   Text('${tempsData.temperatura.toString()} °C', style: TextStyle(color: Colors.green, fontSize: 18, fontWeight: FontWeight.bold),)
                                 else if (tempsData.temperatura! >=
                                         TemperaturasValues.tempOptima &&
@@ -147,7 +148,7 @@ class GetTemps extends StatelessWidget {
                                     TemperaturasValues.tempCritica)
                                   Text('${tempsData.temperatura.toString()} °C', style: TextStyle(color: Colors.red, fontSize: 18, fontWeight: FontWeight.bold),)
                               ],
-                            )
+                            ):Text('No hay datos')
                           ],
                         );
                       },

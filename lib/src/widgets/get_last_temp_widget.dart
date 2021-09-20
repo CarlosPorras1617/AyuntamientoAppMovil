@@ -61,7 +61,7 @@ class GetLastTempState extends State {
                         },
                         child: Text('Refrescar Temperatura'),
                       ),
-                      if (tempActual! < TemperaturasValues.tempOptima)
+                      if (tempActual! < TemperaturasValues.tempOptima && tempActual! != 0)
                         Container(
                           margin:
                               EdgeInsets.only(top: _mediaSize.height * 0.01),
@@ -83,6 +83,15 @@ class GetLastTempState extends State {
                             style: TextStyle(fontSize: 28),
                           ),
                         )
+                      else if(tempActual! == 0)
+                        Container(
+                          margin:
+                              EdgeInsets.only(top: _mediaSize.height * 0.05),
+                          child: Text(
+                            'Compruebe el estado del dispositivo',
+                            style: TextStyle(fontSize: 28), textAlign: TextAlign.center,
+                          ),
+                        ),
                     ],
                   ),
                 );

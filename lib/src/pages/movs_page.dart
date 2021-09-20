@@ -90,6 +90,7 @@ class _ElementosInCard extends StatelessWidget {
   _ElementosInCard({required this.movs});
   @override
   Widget build(BuildContext context) {
+    final _mediaSize = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/DetallesMovimientos', arguments: movs);
@@ -101,7 +102,19 @@ class _ElementosInCard extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.only(top: 20),
             child: ListTile(
-              leading: FadeInImage(fadeOutDuration: Duration(milliseconds: 300), placeholder: AssetImage('assets/placeholder2.png'), image: NetworkImage(movs!.foto!))
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: FadeInImage(
+                  fadeOutDuration: Duration(milliseconds: 300),
+                  placeholder: AssetImage('assets/placeholder2.png'),
+                  image: NetworkImage(movs!.foto!),
+                ),
+              ),
+              title: Text('Texto Ejemplo'),
+              subtitle: Text('Texto Ejemplo 2'),
+              trailing: Text('Texto Ejmplo 3'),
+              horizontalTitleGap: 10,
+              contentPadding: EdgeInsets.only(left: _mediaSize.width * 0.05),
             ),
           ),
         ),
