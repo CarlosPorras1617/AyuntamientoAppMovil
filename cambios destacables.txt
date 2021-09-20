@@ -1,0 +1,17 @@
+se añadio en el manifest
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+en el tag applciation de manifest
+
+ android:requestLegacyExternalStorage="true"
+
+en el pubspec se añadio
+
+image_gallery_saver:
+permission_handler: ^8.1.6
+
+cambios en el .lock no me corresponden
+
+en android - app - build.gradle
+minSdkVersion paso de 16 a 21
