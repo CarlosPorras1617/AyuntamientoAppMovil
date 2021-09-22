@@ -66,7 +66,16 @@ class GetMovimientos extends StatelessWidget {
               return GlowingOverscrollIndicator(
                 axisDirection: AxisDirection.down,
                 color: Colors.red.shade900,
-                child: ListView.builder(
+                  child: /*ListWheelScrollView(
+                    itemExtent: 150,
+                    //squeeze: 0.8,
+                    //diameterRatio: 2.0,
+                    //offAxisFraction: 1.5,
+                    children: movState.movimientos.map((dato) => _ElementosInCard(movs: dato)).toList(),
+                  ),*/
+                
+                
+                ListView.builder(
                   physics: ClampingScrollPhysics(),
                   controller: controller,
                   itemCount: movState.movimientos.length,
