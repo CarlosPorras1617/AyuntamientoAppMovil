@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       title: 'Ayuntamiento App',
       initialRoute: '/',
+      //routes from other pages
       routes: {
         '/':(_)=>MenuScroll(),
         '/RegistroTemps':(_)=>RegistroTemps(),

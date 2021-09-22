@@ -40,6 +40,7 @@ class _GetTempsDesequilibrio extends StatelessWidget {
     final _mediaSize = MediaQuery.of(context).size;
     return FutureBuilder(
       future: tempsProvider.obtenerLastTemperatura(),
+      //get the data from the future method
       builder: (BuildContext context,
           AsyncSnapshot<List<LastTemperaturasModel>> snap) {
         if (snap.hasData) {
@@ -54,9 +55,12 @@ class _GetTempsDesequilibrio extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: temps!.length,
                   itemBuilder: (BuildContext context, int i) {
+                    //get each of the temps by the position
                     final tempsData = temps[i];
+                    //cast the 1st and 2nd digit from the hour to int
                     final horaPrimerDigito = int.parse(tempsData.hora![0]);
                     final horaSegundoDigito = int.parse(tempsData.hora![1]);
+                    //if temp > to the normal temperature
                     return (tempsData.temperatura! >=
                             TemperaturasValues.tempOptima)
                         ? Column(
@@ -70,6 +74,7 @@ class _GetTempsDesequilibrio extends StatelessWidget {
                                     style: estiloText,
                                   ),
                                   DividerVertical(),
+                                  //to know if the hour is am or pm
                                   if (horaPrimerDigito == 0 &&
                                           horaSegundoDigito <= 9 ||
                                       horaPrimerDigito == 1 &&

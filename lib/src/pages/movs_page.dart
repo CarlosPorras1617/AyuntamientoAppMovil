@@ -19,6 +19,7 @@ class _MovimientosPageState extends State {
     final _movimientosState = Get.put(MovimientosState());
     _movimientosState.obtenerMovimientos();
     _controller.addListener(() async {
+      //to reload another 10 elements from the paginated api
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
         if (_cargando == false) {
           setState(() {
@@ -76,6 +77,7 @@ class GetMovimientos extends StatelessWidget {
                 
                 
                 ListView.builder(
+                  //change the color of offset limit of the listvire.builder
                   physics: ClampingScrollPhysics(),
                   controller: controller,
                   itemCount: movState.movimientos.length,
@@ -103,6 +105,7 @@ class _ElementosInCard extends StatelessWidget {
     final horaSegundoDigito = int.parse(movs!.hora![1]);
     final _mediaSize = MediaQuery.of(context).size;
     return GestureDetector(
+      //send the movsModel instances to detalles movimientos page
       onTap: () {
         Navigator.pushNamed(context, '/DetallesMovimientos', arguments: movs);
       },

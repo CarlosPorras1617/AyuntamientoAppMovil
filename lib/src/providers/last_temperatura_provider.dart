@@ -8,6 +8,8 @@ class LastTemperaturaProvider {
     final response = await http.get(_urlToApi);
     List<dynamic> responseData = response.data;
     List<dynamic> tempErr = [];
+    //if the response from api is empty then will create another list with the instance of the temperaturamodel and then will add a default value
+    //to avoid some errors and catch em
     if (responseData.isNotEmpty) {
       final lasTemp = responseData.reversed
           .map((data) => LastTemperaturasModel.fromMapJson(data))

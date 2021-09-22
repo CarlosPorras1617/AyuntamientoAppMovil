@@ -86,13 +86,6 @@ class BotonesNavegacion extends StatelessWidget {
           height: _mediaSize.height * 1,
           child: Column(
             children: [
-              /*Container(
-                height: _mediaSize.height * 0.3,
-                alignment: Alignment.topCenter,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/placeholder.jpg'))),
-              ),*/
               SizedBox(height: _mediaSize.height * 0.02),
               _BtnMenu(
                 route: '/RegistroTemps',
@@ -125,6 +118,7 @@ class _BtnMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final _mediaSize = MediaQuery.of(context).size;
     return GestureDetector(
+      //to navigate to another page when the button is clicked the route is sent by parameters of the class
       onTap: () {
         Navigator.pushNamed(context, route!);
       },

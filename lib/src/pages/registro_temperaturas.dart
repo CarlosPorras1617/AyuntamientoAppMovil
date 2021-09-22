@@ -21,6 +21,7 @@ class RegistroTempsState extends State {
   @override
   void initState() {
     _temperaturasState.obtenerTemperaturas();
+    //reload 10 temperatures from the paginated api when listview gets to limit
     _controller.addListener(() async {
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
         if (_cargando == false) {
@@ -163,39 +164,3 @@ class GetTemps extends StatelessWidget {
     );
   }
 }
-/*var lastTempProvider = LastTemperaturaProvider();
-    return FutureBuilder(
-      future: lastTempProvider.obtenerLastTemperatura(),
-      builder: (BuildContext context,
-          AsyncSnapshot<List<LastTemperaturasModel>> snap) {
-            if (snap.hasData) {
-                final temps = snap.data;
-                return Container(
-                  height: 200.0,
-                  margin: EdgeInsets.only(top: 200.0),
-                  child: Card(
-                    child: ListView.builder(
-                      itemCount: temps!.length,
-                      itemBuilder: (BuildContext context, int i){
-                        final tempsData = temps[i];
-                        return Column(
-                          children: [
-                            Divider(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(tempsData.fecha!),
-                                Text(tempsData.hora!),
-                                Text(tempsData.temperatura!.toString())
-                              ],
-                            )
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                );
-            }
-            return CircularProgressIndicator();
-          },
-    );*/

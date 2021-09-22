@@ -22,6 +22,7 @@ class DetallesMovimientos extends StatelessWidget {
       body: Stack(
         children: [
           ColorFondo(),
+          //send the movimientosModel from arguments
           _FotoMovimiento(
             movimiento: movimientos,
           )
@@ -33,7 +34,6 @@ class DetallesMovimientos extends StatelessWidget {
 
 class _FotoMovimiento extends StatelessWidget {
   final MovimientosModel? movimiento;
-  final String _imagepath = '';
   _FotoMovimiento({required this.movimiento});
   @override
   Widget build(BuildContext context) {
@@ -69,8 +69,7 @@ class _FotoMovimiento extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                //_GuardarImagen(movimiento!.foto);
-                _GuardarImagen(movimiento!.foto, context);
+                _guardarImagen(movimiento!.foto, context);
               },
               child: Text(
                 'Guardar Imagen',
@@ -91,7 +90,7 @@ class _FotoMovimiento extends StatelessWidget {
     );
   }
 
-  void _GuardarImagen(urlToImage, context) async {
+  void _guardarImagen(urlToImage, context) async {
     var status = await Permission.storage.request();
     var nombreFoto = movimiento!.fecha;
     var nombreFoto2 = movimiento!.hora;
@@ -102,9 +101,11 @@ class _FotoMovimiento extends StatelessWidget {
           Uint8List.fromList(response.data),
           quality: 60,
           name: "f= ${nombreFoto} h= ${nombreFoto2}");
+      //cast the response to a map string dynamic
       final resultado = Map<String, dynamic>.from(result);
       final comparacion = resultado['isSuccess'];
       //print(resultado['isSuccess']);
+      //if the response of the map is true then showDialog
       if (comparacion == true) {
         showDialog(
           context: context,
@@ -114,7 +115,9 @@ class _FotoMovimiento extends StatelessWidget {
                 Text('Fotografia guardada correctamente en galeria - pictures'),
           ),
         );
-      } else if (comparacion == false) {
+      }
+      //if the response is false 
+      else if (comparacion == false) {
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
@@ -132,6 +135,7 @@ class _CuadroBlanco extends StatelessWidget {
   _CuadroBlanco({required this.movimiento});
   @override
   Widget build(BuildContext context) {
+    //parse the string position of the hour
     final horaPrimerDigito = int.parse(movimiento!.hora![0]);
     final horaSegundoDigito = int.parse(movimiento!.hora![1]);
     final _mediaSize = MediaQuery.of(context).size;
@@ -175,6 +179,8 @@ class _CuadroBlanco extends StatelessWidget {
                 SizedBox(
                   height: _mediaSize.height * 0.02,
                 ),
+
+                // To know if the hour is AM or PM
                 if (horaPrimerDigito == 0 && horaSegundoDigito <= 9 ||
                     horaPrimerDigito == 1 && horaSegundoDigito <= 1)
                   Text(
