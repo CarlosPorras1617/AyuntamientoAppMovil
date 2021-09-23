@@ -163,12 +163,16 @@ class _BtnMenu extends StatelessWidget {
 class ContenedorCentro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(50.0),
-      child: Container(
-        height: 400.0,
-        width: 300.0,
-        color: Colors.white,
+   final _mediasize = MediaQuery.of(context).size;
+    return Opacity(
+      opacity: 0.7,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(50.0),
+        child: Container(
+          height: _mediasize.height * 0.7,
+          width: _mediasize.width * 0.84,
+          color: Colors.white,
+        ),
       ),
     );
   }

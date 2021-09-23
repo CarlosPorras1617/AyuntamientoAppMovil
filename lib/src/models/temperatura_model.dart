@@ -16,11 +16,11 @@ class TemperaturasModel{
   });
 
   factory TemperaturasModel.fromMapJson(Map<String, dynamic>data)=>TemperaturasModel(
-    id: (data['_id'] == null )? [] : data['_id'],
-    fecha: (data['fecha'] == null) ? [] : data['fecha'],
-    hora: (data['hora']== null) ? [] : data['hora'],
-    temperatura: (data['temperatura']/1 == null) ? [] : data['temperatura']/1,
-    temperaturaAlta: (data['temperaturalta']/1 == null) ? [] : data['temperaturalta']/1,
-    temperaturaMedia: (data['temperaturamedia']/1 == null) ? [] : data['temperaturamedia']/1
+    id: data['_id'],
+    fecha: data['fecha'],
+    hora: data['hora'],
+    temperatura: (data['temperatura'] == null) ? 0 : data['temperatura']/1,
+    temperaturaAlta: (data['temperaturalta'] == null) ? 0 : data['temperaturalta']/1,
+    temperaturaMedia: (data['temperaturamedia'] == null) ? 0 : data['temperaturamedia']/1
   );
 }
