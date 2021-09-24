@@ -17,6 +17,13 @@ class MenuScroll extends StatelessWidget {
         fullTransitionValue: 500,
         enableSideReveal: false,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.pushNamed(context, '/PreguntasFrecuentes');
+        },
+        child: Center(child: Icon(Icons.report, size: 38.0,),),
+        backgroundColor: Colors.red.shade900,
+      ),
     );
   }
 }

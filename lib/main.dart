@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temp_server/src/pages/movs_detalles.dart';
 import 'package:temp_server/src/pages/movs_page.dart';
 import 'package:temp_server/src/pages/home_page.dart';
+import 'package:temp_server/src/pages/preguntas_frecuentes_page.dart';
 import 'package:temp_server/src/pages/registro_temperaturas.dart';
 import 'package:temp_server/src/pages/temps_desequilibrios.dart';
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget{
         '/RegistroTemps':(_)=>RegistroTemps(),
         '/MovimientosPage':(_)=>MovimientosPage(),
         '/DesequilibriosPage':(_)=>DesequilibriosPage(),
-        '/DetallesMovimientos':(_)=>DetallesMovimientos()
+        '/DetallesMovimientos':(_)=>DetallesMovimientos(),
+        '/PreguntasFrecuentes':(_)=>PreguntasFrecuentes()
       },
     );
   }

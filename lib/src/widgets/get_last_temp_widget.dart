@@ -173,7 +173,7 @@ class GetLastTempState extends State {
                 left: _mediaSize.width * 0.37,
                 bottom: _mediaSize.height * 0.5,
                 child: CircularProgressIndicator(
-                  color: Colors.blue,
+                  color: Colors.red.shade900,
                 ),
               ),
             ],
