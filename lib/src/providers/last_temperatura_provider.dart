@@ -16,7 +16,7 @@ class LastTemperaturaProvider {
           .toList();
       return lasTemp;
     }else{
-      tempErr.add({'_id': 'hola', 'fecha':'2021-09-2020', 'hora':'09-42-09', 'temperatura':0, 'temperaturamedia':0, 'temperaturalta':0});
+      tempErr.add({'_id': 'hola', 'fecha':'2021-09-2020', 'hora':'No se han registrado temperaturas', 'temperatura':0, 'temperaturamedia':0, 'temperaturalta':0});
       return tempErr.map((data) => LastTemperaturasModel.fromMapJson(data)).toList();
     }
 
