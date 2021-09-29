@@ -52,18 +52,6 @@ class RegistroTempsState extends State {
       body: Stack(
         children: [
           ColorFondo(),
-          Positioned(
-            left: _mediaSize.width * 0.23,
-            child: Container(
-              height: 200.0,
-              width: 200.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/placeholder.jpg'),
-                ),
-              ),
-            ),
-          ),
           GetTemps(controller: _controller),
           if (_cargando == true)
             //while getting more temperatures
@@ -79,13 +67,13 @@ class RegistroTempsState extends State {
             Container()
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: (){
           showSearch(context: context, delegate: SearchTemperatura());
         },
         child: Icon(Icons.search),
         backgroundColor: Colors.red,
-      ),
+      ),*/
     );
   }
 }
@@ -97,6 +85,7 @@ class GetTemps extends StatelessWidget {
   GetTemps({required this.controller});
   @override
   Widget build(BuildContext context) {
+    final _mediasize = MediaQuery.of(context).size;
     return SafeArea(
       child: Stack(
         children: [
@@ -104,7 +93,7 @@ class GetTemps extends StatelessWidget {
             builder: (TemperaturasState tempsState) {
               return Container(
                 height: double.maxFinite,
-                margin: EdgeInsets.only(top: 200.0),
+                margin: EdgeInsets.only(top: _mediasize.height *0.07),
                 child: Card(
                   child: GlowingOverscrollIndicator(
                     axisDirection: AxisDirection.down,

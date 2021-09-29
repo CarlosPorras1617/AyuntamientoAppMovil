@@ -97,16 +97,19 @@ class BotonesNavegacion extends StatelessWidget {
               _BtnMenu(
                 route: '/RegistroTemps',
                 title: 'Registro De Temperaturas',
+                foto: 'assets/registroTemps.png',
               ),
               SizedBox(height: _mediaSize.height * 0.02),
               _BtnMenu(
                 route: '/MovimientosPage',
                 title: 'Movimientos y Capturas',
+                foto: 'assets/capturesIcon.png',
               ),
               SizedBox(height: _mediaSize.height * 0.02),
               _BtnMenu(
                 title: 'Temperaturas Desequilibrio',
                 route: '/DesequilibriosPage',
+                foto: 'assets/desequilibrioIcon2.png',
               ),
             ],
           ),
@@ -120,7 +123,8 @@ class _BtnMenu extends StatelessWidget {
   String? route;
   String? image;
   String? title;
-  _BtnMenu({required this.route, this.image, required this.title});
+  String ? foto;
+  _BtnMenu({required this.route, this.image, required this.title, required this.foto});
   @override
   Widget build(BuildContext context) {
     final _mediaSize = MediaQuery.of(context).size;
@@ -141,11 +145,12 @@ class _BtnMenu extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircleAvatar(
+                    /*CircleAvatar(
                       radius: _mediaSize.width * 0.13,
                       backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('assets/placeholder.jpg'),
-                    ),
+                      backgroundImage: AssetImage(foto!),
+                    ),*/
+                    Image(image: AssetImage(foto!)),
                     SizedBox(
                       height: _mediaSize.height * 0.02,
                     ),
