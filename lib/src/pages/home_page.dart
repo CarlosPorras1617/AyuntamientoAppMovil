@@ -18,10 +18,15 @@ class MenuScroll extends StatelessWidget {
         enableSideReveal: false,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           Navigator.pushNamed(context, '/PreguntasFrecuentes');
         },
-        child: Center(child: Icon(Icons.report, size: 38.0,),),
+        child: Center(
+          child: Icon(
+            Icons.report,
+            size: 38.0,
+          ),
+        ),
         backgroundColor: Colors.red.shade900,
       ),
     );
@@ -123,8 +128,12 @@ class _BtnMenu extends StatelessWidget {
   String? route;
   String? image;
   String? title;
-  String ? foto;
-  _BtnMenu({required this.route, this.image, required this.title, required this.foto});
+  String? foto;
+  _BtnMenu(
+      {required this.route,
+      this.image,
+      required this.title,
+      required this.foto});
   @override
   Widget build(BuildContext context) {
     final _mediaSize = MediaQuery.of(context).size;
@@ -150,7 +159,11 @@ class _BtnMenu extends StatelessWidget {
                       backgroundColor: Colors.white,
                       backgroundImage: AssetImage(foto!),
                     ),*/
-                    Image(image: AssetImage(foto!)),
+                    Container(
+                      height: _mediaSize.height * 0.13,
+                        child: Image(
+                      image: AssetImage(foto!),
+                    )),
                     SizedBox(
                       height: _mediaSize.height * 0.02,
                     ),
@@ -175,7 +188,7 @@ class _BtnMenu extends StatelessWidget {
 class ContenedorCentro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   final _mediasize = MediaQuery.of(context).size;
+    final _mediasize = MediaQuery.of(context).size;
     return Opacity(
       opacity: 0.7,
       child: ClipRRect(
