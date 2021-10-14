@@ -45,77 +45,120 @@ class _GetTempsDesequilibrio extends StatelessWidget {
           AsyncSnapshot<List<LastTemperaturasModel>> snap) {
         if (snap.hasData) {
           final temps = snap.data;
-          return Container(
-            height: double.maxFinite,
-            margin: EdgeInsets.only(top: _mediaSize.height * 0.07),
-            child: Card(
-              child: GlowingOverscrollIndicator(
-                axisDirection: AxisDirection.down,
-                color: Colors.red.shade900,
-                child: ListView.builder(
-                  itemCount: temps!.length,
-                  itemBuilder: (BuildContext context, int i) {
-                    //get each of the temps by the position
-                    final tempsData = temps[i];
-                    //cast the 1st and 2nd digit from the hour to int
-                    final horaPrimerDigito = int.parse(tempsData.hora![0]);
-                    final horaSegundoDigito = int.parse(tempsData.hora![1]);
-                    //if temp > to the normal temperature
-                    return (tempsData.temperatura! >=
-                            TemperaturasValues.tempOptima)
-                        ? Column(
-                            children: [
-                              Divider(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    tempsData.fecha!,
-                                    style: estiloText,
-                                  ),
-                                  DividerVertical(),
-                                  //to know if the hour is am or pm
-                                  if (horaPrimerDigito == 0 &&
-                                          horaSegundoDigito <= 9 ||
-                                      horaPrimerDigito == 1 &&
-                                          horaSegundoDigito <= 1)
-                                    Text(
-                                      "${tempsData.hora} AM",
-                                      style: estiloText,
-                                    )
-                                  else if (horaPrimerDigito == 1 &&
-                                          horaSegundoDigito >= 2 ||
-                                      horaPrimerDigito == 2 &&
-                                          horaSegundoDigito <= 3)
-                                    Text(
-                                      "${tempsData.hora} PM",
-                                      style: estiloText,
-                                    ),
-                                  DividerVertical(),
-                                  if(tempsData.temperatura! < TemperaturasValues.tempOptima)
-                                    Text(
-                                    "${tempsData.temperatura!} C°".toString(),
-                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.green),
-                                    ),
-                                  if (tempsData.temperatura! >= TemperaturasValues.tempOptima && tempsData.temperatura! <= TemperaturasValues.tempCritica)
-                                    Text(
-                                    "${tempsData.temperatura!} C°".toString(),
-                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.yellow),
-                                    ),
-                                  if(tempsData.temperatura! > TemperaturasValues.tempCritica)
-                                    Text(
-                                    "${tempsData.temperatura!} C°".toString(),
-                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.red),
-                                    ),
-                                ],
-                              )
-                            ],
-                          )
-                        : Container();
-                  },
+          return Column(
+            children: [
+              Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(width: _mediaSize.width * 0.0),
+                    Text(
+                      "Fecha",
+                      style: estiloText,
+                    ),
+                    SizedBox(width: _mediaSize.width * 0.0),
+                    Text(
+                      "Hora",
+                      style: estiloText,
+                    ),
+                    SizedBox(width: _mediaSize.width * 0.05),
+                    Text(
+                      "Temp",
+                      style: estiloText,
+                    )
+                  ],
                 ),
               ),
-            ),
+              Container(
+                height: _mediaSize.height * 0.84,
+                child: Card(
+                  child: GlowingOverscrollIndicator(
+                    axisDirection: AxisDirection.down,
+                    color: Colors.red.shade900,
+                    child: ListView.builder(
+                      itemCount: temps!.length,
+                      itemBuilder: (BuildContext context, int i) {
+                        //get each of the temps by the position
+                        final tempsData = temps[i];
+                        //cast the 1st and 2nd digit from the hour to int
+                        final horaPrimerDigito = int.parse(tempsData.hora![0]);
+                        final horaSegundoDigito = int.parse(tempsData.hora![1]);
+                        //if temp > to the normal temperature
+                        return (tempsData.temperatura! >=
+                                TemperaturasValues.tempOptima)
+                            ? Column(
+                                children: [
+                                  Divider(),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        tempsData.fecha!,
+                                        style: estiloText,
+                                      ),
+                                      DividerVertical(),
+                                      //to know if the hour is am or pm
+                                      if (horaPrimerDigito == 0 &&
+                                              horaSegundoDigito <= 9 ||
+                                          horaPrimerDigito == 1 &&
+                                              horaSegundoDigito <= 1)
+                                        Text(
+                                          "${tempsData.hora} AM",
+                                          style: estiloText,
+                                        )
+                                      else if (horaPrimerDigito == 1 &&
+                                              horaSegundoDigito >= 2 ||
+                                          horaPrimerDigito == 2 &&
+                                              horaSegundoDigito <= 3)
+                                        Text(
+                                          "${tempsData.hora} PM",
+                                          style: estiloText,
+                                        ),
+                                      DividerVertical(),
+                                      if (tempsData.temperatura! <
+                                          TemperaturasValues.tempOptima)
+                                        Text(
+                                          "${tempsData.temperatura!} C°"
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18,
+                                              color: Colors.green),
+                                        ),
+                                      if (tempsData.temperatura! >=
+                                              TemperaturasValues.tempOptima &&
+                                          tempsData.temperatura! <=
+                                              TemperaturasValues.tempCritica)
+                                        Text(
+                                          "${tempsData.temperatura!} C°"
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18,
+                                              color: Colors.yellow),
+                                        ),
+                                      if (tempsData.temperatura! >
+                                          TemperaturasValues.tempCritica)
+                                        Text(
+                                          "${tempsData.temperatura!} C°"
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18,
+                                              color: Colors.red),
+                                        ),
+                                    ],
+                                  )
+                                ],
+                              )
+                            : Container();
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ],
           );
         }
         return Container(

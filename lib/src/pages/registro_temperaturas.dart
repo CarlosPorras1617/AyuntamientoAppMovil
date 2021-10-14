@@ -91,90 +91,106 @@ class GetTemps extends StatelessWidget {
         children: [
           GetBuilder<TemperaturasState>(
             builder: (TemperaturasState tempsState) {
-              return Container(
-                height: double.maxFinite,
-                margin: EdgeInsets.only(top: _mediasize.height *0.07),
-                child: Card(
-                  child: GlowingOverscrollIndicator(
-                    axisDirection: AxisDirection.down,
-                    color: Colors.red.shade900,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      controller: controller,
-                      itemCount: tempsState.temperaturas.length,
-                      itemBuilder: (BuildContext context, int i) {
-                        final tempsData = tempsState.temperaturas[i];
-                        final horaPrimerDigito = int.parse(tempsData.hora![0]);
-                        final horaSegundoDigito = int.parse(tempsData.hora![1]);
-                        return Column(
-                          children: [
-                            Divider(),
-                            (tempsData.temperatura != 0)
-                                ? Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        tempsData.fecha!,
-                                        style: estiloText,
-                                      ),
-                                      DividerVertical(),
-                                      if (horaPrimerDigito == 0 &&
-                                              horaSegundoDigito <= 9 ||
-                                          horaPrimerDigito == 1 &&
-                                              horaSegundoDigito <= 1)
-                                        Text(
-                                          "${tempsData.hora}  AM",
-                                          style: estiloText,
-                                        )
-                                      else if (horaPrimerDigito == 1 &&
-                                              horaSegundoDigito >= 2 ||
-                                          horaPrimerDigito == 2 &&
-                                              horaSegundoDigito <= 3)
-                                        Text(
-                                          "${tempsData.hora}  PM",
-                                          style: estiloText,
-                                        ),
-                                      DividerVertical(),
-                                      if (tempsData.temperatura! <
-                                              TemperaturasValues.tempOptima &&
-                                          tempsData.temperatura != 0)
-                                        Text(
-                                          '${tempsData.temperatura.toString()} °C',
-                                          style: TextStyle(
-                                              color: Colors.green,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      else if (tempsData.temperatura! >=
-                                              TemperaturasValues.tempOptima &&
-                                          tempsData.temperatura! <=
-                                              TemperaturasValues.tempCritica)
-                                        Text(
-                                          '${tempsData.temperatura.toString()} °C',
-                                          style: TextStyle(
-                                              color: Colors.yellow,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      else if (tempsData.temperatura! >
-                                          TemperaturasValues.tempCritica)
-                                        Text(
-                                          '${tempsData.temperatura.toString()} °C',
-                                          style: TextStyle(
-                                              color: Colors.red,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                    ],
-                                  )
-                                : Text('No hay datos')
-                          ],
-                        );
-                      },
+              return Column(
+                children: [
+                  Card(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(width: _mediasize.width * 0.0),
+                        Text("Fecha", style: estiloText,),
+                        SizedBox(width: _mediasize.width * 0.0),
+                        Text("Hora", style: estiloText,),
+                        SizedBox(width: _mediasize.width * 0.05),
+                        Text("Temp", style: estiloText,)
+                      ],
                     ),
                   ),
-                ),
+                  Container(
+                    height: _mediasize.height * 0.84,
+                    child: Card(
+                      child: GlowingOverscrollIndicator(
+                        axisDirection: AxisDirection.down,
+                        color: Colors.red.shade900,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          controller: controller,
+                          itemCount: tempsState.temperaturas.length,
+                          itemBuilder: (BuildContext context, int i) {
+                            final tempsData = tempsState.temperaturas[i];
+                            final horaPrimerDigito = int.parse(tempsData.hora![0]);
+                            final horaSegundoDigito = int.parse(tempsData.hora![1]);
+                            return Column(
+                              children: [
+                                Divider(),
+                                (tempsData.temperatura != 0)
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text(
+                                            tempsData.fecha!,
+                                            style: estiloText,
+                                          ),
+                                          DividerVertical(),
+                                          if (horaPrimerDigito == 0 &&
+                                                  horaSegundoDigito <= 9 ||
+                                              horaPrimerDigito == 1 &&
+                                                  horaSegundoDigito <= 1)
+                                            Text(
+                                              "${tempsData.hora}  AM",
+                                              style: estiloText,
+                                            )
+                                          else if (horaPrimerDigito == 1 &&
+                                                  horaSegundoDigito >= 2 ||
+                                              horaPrimerDigito == 2 &&
+                                                  horaSegundoDigito <= 3)
+                                            Text(
+                                              "${tempsData.hora}  PM",
+                                              style: estiloText,
+                                            ),
+                                          DividerVertical(),
+                                          if (tempsData.temperatura! <
+                                                  TemperaturasValues.tempOptima &&
+                                              tempsData.temperatura != 0)
+                                            Text(
+                                              '${tempsData.temperatura.toString()} °C',
+                                              style: TextStyle(
+                                                  color: Colors.green,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          else if (tempsData.temperatura! >=
+                                                  TemperaturasValues.tempOptima &&
+                                              tempsData.temperatura! <=
+                                                  TemperaturasValues.tempCritica)
+                                            Text(
+                                              '${tempsData.temperatura.toString()} °C',
+                                              style: TextStyle(
+                                                  color: Colors.yellow,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          else if (tempsData.temperatura! >
+                                              TemperaturasValues.tempCritica)
+                                            Text(
+                                              '${tempsData.temperatura.toString()} °C',
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                        ],
+                                      )
+                                    : Text('No hay datos')
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               );
             },
           )
