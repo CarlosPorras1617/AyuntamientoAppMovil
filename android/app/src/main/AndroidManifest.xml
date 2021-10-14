@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
    <application
         android:requestLegacyExternalStorage="true"
-        android:label="temp_server"
+        android:label="TempServer"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
