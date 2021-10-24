@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:temp_server/src/models/movs_model.dart';
 
 class MovimientosProvider{
-  final String _urlToApi = 'https://ayntamientoapi.herokuapp.com/api/movimientos';
+  final String _urlToApi = 'https://cloud-temp-project.herokuapp.com/api/movimientos';
   final http = Dio();
   List<MovimientosModel> movimientos = [];
   Future<List<MovimientosModel>> obtenerMovimientos(int pagina)async{

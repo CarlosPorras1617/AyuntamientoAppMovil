@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:temp_server/src/models/last_temperatura_model.dart';
 
 class LastTemperaturaProvider {
-  final String _urlToApi = 'https://integradora-app.herokuapp.com/api/18b20';
+  final String _urlToApi = 'https://cloud-temp-project-notpaginate.herokuapp.com/api/temperaturas';
   final http = Dio();
   Future<List<LastTemperaturasModel>> obtenerLastTemperatura() async {
     final response = await http.get(_urlToApi);
